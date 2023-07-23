@@ -1,0 +1,17 @@
+.container  {
+  margin: 0 auto;
+  max-width: 360px;
+  padding: 16px 16px;
+}
+
+.link {
+  padding: 16px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color ease .3s;
+  color: #000;
+}
+
+.link:hover {
+  background-color: #eceff1;
+}
