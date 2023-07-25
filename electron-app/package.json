@@ -9,34 +9,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\"",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder",
-    "postinstall": "electron-builder install-app-deps"
-  },
-  "build": {
-    "appId": "com.example.app",
-    "productName": "ScreenOk",
-    "directories": {
-      "output": "dist"
-    },
-    "win": {
-      "target": "nsis"
-    },
-    "mac": {
-      "target": "dmg"
-    },
-    "linux": {
-      "target": "AppImage"
-    },
-    "publish": [
-      {
-        "provider": "github",
-        "owner": "your-github-username",
-        "repo": "your-github-repo-name",
-        "releaseType": "draft"
-      }
-    ]
+    "lint": "echo \"No linting configured\""
   },
   "keywords": [],
   "author": {
@@ -45,13 +18,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "electron-screenshots": "^0.5.23",
-    "electron-squirrel-startup": "^1.0.0",
-    "mkdirp": "^3.0.1",
-    "node-screenshot": "^0.1.1",
-    "robotjs": "^0.6.0",
-    "screenshot-desktop": "^1.15.0",
-    "uuid": "^9.0.0"
+    "desktop-capture": "^0.1.1",
+    "electron-log": "^4.4.8",
+    "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.2.1",
@@ -60,9 +29,7 @@
     "@electron-forge/maker-squirrel": "^6.2.1",
     "@electron-forge/maker-zip": "^6.2.1",
     "@electron-forge/plugin-auto-unpack-natives": "^6.2.1",
-    "electron": "25.3.0",
-    "electron-builder": "^24.4.0",
-    "electron-log": "^4.4.8",
-    "electron-updater": "^6.1.1"
+    "electron": "^15.3.0",
+    "electron-log": "^4.4.8"
   }
 }

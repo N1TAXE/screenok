@@ -1,12 +1,7 @@
-const { app, BrowserWindow, globalShortcut, ipcMain, screen } = require('electron');
+const { app, BrowserWindow, globalShortcut, ipcMain } = require('electron');
 const fs = require('fs');
 const path = require('path');
-const {captureScreenshot, getCurrentDate} = require("./utils/utils");
-const log = require('electron-log');
-
-if (require('electron-squirrel-startup')) {
-  app.quit();
-}
+const {getCurrentDate, takeScreenshot} = require("./utils/utils");
 
 function saveConfigData(configData) {
   const configPath = path.join(__dirname, 'config.json');
@@ -47,7 +42,7 @@ function registerGlobalShortcuts() {
   configData.forEach(item => {
     globalShortcut.register(item.shortcut, () => {
       const folder = item.name;
-      captureScreenshot(folder, `${folder} ${getCurrentDate()}`);
+      takeScreenshot(folder, `${folder} ${getCurrentDate()}`);
     });
   });
 }
