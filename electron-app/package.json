@@ -1,7 +1,7 @@
 {
   "name": "getbinder",
   "productName": "GetBinder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Binder",
   "main": "src/index.js",
   "scripts": {
@@ -29,7 +29,7 @@
       "publish": [
         "github"
       ],
-      "icon": "src/screens/main/build/favicon.ico"
+      "icon": "android-chrome-512x512.png"
     },
     "directories": {
       "output": "electron-build",

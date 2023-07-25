@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {NavLink, useParams} from "react-router-dom";
+import {NavLink, useParams, useNavigate } from "react-router-dom";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {MAIN_ROUTE} from "../utils/consts";
@@ -12,6 +12,7 @@ const BindItem = observer(() => {
     const [name, setName] = useState('')
     const [loading, setLoading] = useState(true)
     const [shortCut, setShortCut] = useState('')
+    const navigate = useNavigate();
 
     useEffect(() => {
         const item = config.getConfig.find((item) => item.id === Number(id));
@@ -59,6 +60,13 @@ const BindItem = observer(() => {
         return null
     };
 
+    const handleDelete = () => {
+        const updatedConfig = config.getConfig.filter(item => item.id !== foundConfigItem.id);
+        config.setConfig(updatedConfig);
+        window.api.saveConfigData(JSON.parse(JSON.stringify(config.getConfig)));
+        navigate(MAIN_ROUTE);
+    }
+
     const handleSaveConfig = () => {
         const updatedConfig = config.getConfig.map(item => {
             if (item.id === foundConfigItem.id) {
@@ -70,6 +78,7 @@ const BindItem = observer(() => {
         config.setConfig(updatedConfig);
         // Вызываем функцию из основного процесса Electron для сохранения данных в файл
         window.api.saveConfigData(JSON.parse(JSON.stringify(config.getConfig)));
+        navigate(MAIN_ROUTE);
     };
 
     useEffect(() => {
@@ -104,10 +113,17 @@ const BindItem = observer(() => {
                     </div>
                     <div className="input__item">
                         <label htmlFor="shortcut">Комбинация клавиш</label>
-                        <input name="shortcut" value={shortCut} onKeyDown={handleKeyDown} type="text"/>
+                        <input name="shortcut" placeholder={!shortCut && 'Клавиша не назначена'} value={shortCut} onKeyDown={handleKeyDown} type="text"/>
                     </div>
                 </div>
-                <button className="btn btn-md btn-success w100" onClick={handleSaveConfig}>Сохранить</button>
+                <div className="btn-group">
+                    <button className="btn btn-md btn-success w100" onClick={handleSaveConfig}>Сохранить</button>
+                    <button className="btn btn-md btn-icon btn-red w100" onClick={handleDelete}>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.4167 2.88H12.0833V1.28C12.0833 0.574 11.5602 0 10.9167 0H5.08333C4.43984 0 3.91667 0.574 3.91667 1.28V2.88H1.58333C1.26068 2.88 1 3.166 1 3.52V4.16C1 4.248 1.06562 4.32 1.14583 4.32H2.24687L2.69714 14.78C2.7263 15.462 3.24036 16 3.86198 16H12.138C12.7615 16 13.2737 15.464 13.3029 14.78L13.7531 4.32H14.8542C14.9344 4.32 15 4.248 15 4.16V3.52C15 3.166 14.7393 2.88 14.4167 2.88ZM10.7708 2.88H5.22917V1.44H10.7708V2.88Z" fill="white"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </React.Fragment>
     );

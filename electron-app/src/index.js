@@ -53,15 +53,18 @@ app.whenReady().then(() => {
   });
 
   autoUpdater.checkForUpdates();
-  updateWindow.showMessage(`Проверка обновлений...`);
-  updateWindow.setVersion(`${app.getVersion()}`);
-  updateWindow.setStatus(`check-for-updates`);
 
   // setTimeout(() => {
   //   updateWindow.close();
   //   updateWindow = null;
   //   createWindow();
   // }, 1000);
+});
+
+autoUpdater.on("checking-for-update", (info) => {
+  updateWindow.showMessage(`Проверка обновлений...`);
+  updateWindow.setVersion(`${app.getVersion()}`);
+  updateWindow.setStatus(`check-for-updates`);
 });
 
 autoUpdater.on("update-available", (info) => {

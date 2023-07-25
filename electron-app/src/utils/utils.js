@@ -115,10 +115,12 @@ function registerGlobalShortcuts() {
         console.log('Config loaded:', configPath)
         const configData = JSON.parse(configContent);
         configData.forEach(item => {
-            globalShortcut.register(item.shortcut, () => {
-                const folder = item.name;
-                takeScreenshot(folder, `${folder} ${getCurrentDate()}`);
-            });
+            if (item.shortcut !== null) {
+                globalShortcut.register(item.shortcut, () => {
+                    const folder = item.name;
+                    takeScreenshot(folder, `${folder} ${getCurrentDate()}`);
+                });
+            }
         });
     } catch (e) {
         console.log(e)
