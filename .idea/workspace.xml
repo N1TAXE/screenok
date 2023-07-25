@@ -1,11 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c531c44-830f-47c8-9476-8432a2fc7698" name="Changes" comment="AutoUpdate">
+    <list default="true" id="5c531c44-830f-47c8-9476-8432a2fc7698" name="Changes" comment="AutoUpdate test">
+      <change afterPath="$PROJECT_DIR$/electron-app/src/screens/main/mainScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/asset-manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/build/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/build/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/build/logo192.png" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/build/logo192.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/build/logo512.png" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/build/logo512.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/build/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/build/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/build/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/build/static/css/main.04153c9d.css" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/build/static/css/main.04153c9d.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/build/static/css/main.04153c9d.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/build/static/css/main.04153c9d.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/build/static/js/main.9acde3c2.js" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/build/static/js/main.9acde3c2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/build/static/js/main.9acde3c2.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/build/static/js/main.9acde3c2.js.LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/build/static/js/main.9acde3c2.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/build/static/js/main.9acde3c2.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/electron-app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electron-app/src/preload.js" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/preload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electron-app/src/updater.html" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/updater.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/preload.js" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/mainPreload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/static/css/main.04153c9d.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/static/css/main.04153c9d.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/static/js/main.0c19fce3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/static/js/main.0c19fce3.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/static/js/main.0c19fce3.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/updater.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/utils/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +78,7 @@
       <recent name="D:\.WORK\www\screenok\electron-app\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\.WORK\www\screenok\electron-app\src\screens\main" />
       <recent name="D:\.WORK\www\screenok\electron-app\src" />
       <recent name="D:\.WORK\www\screenok\electron-app" />
     </key>
@@ -70,7 +98,7 @@
       <workItem from="1690043240258" duration="12740000" />
       <workItem from="1690237715702" duration="64000" />
       <workItem from="1690237870197" duration="730000" />
-      <workItem from="1690238767677" duration="8843000" />
+      <workItem from="1690238767677" duration="11742000" />
     </task>
     <task id="LOCAL-00001" summary="Init Commit">
       <created>1690071459521</created>
@@ -93,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690247228015</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="AutoUpdate test">
+      <created>1690248215574</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1690248215574</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +149,7 @@
     <MESSAGE value="Init Commit" />
     <MESSAGE value="Refactor Screenshot" />
     <MESSAGE value="AutoUpdate" />
-    <option name="LAST_COMMIT_MESSAGE" value="AutoUpdate" />
+    <MESSAGE value="AutoUpdate test" />
+    <option name="LAST_COMMIT_MESSAGE" value="AutoUpdate test" />
   </component>
 </project>

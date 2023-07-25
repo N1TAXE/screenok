@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require('fs');
 const log = require('electron-log');
-const {desktopCapturer, screen} = require('electron')
+const {desktopCapturer, screen, globalShortcut} = require('electron')
 
 // Путь для хранения логов (в примере это папка "logs" в корне приложения)
 const exeDir = path.dirname(process.execPath);
@@ -94,7 +94,34 @@ function getCurrentDate() {
 }
 
 function saveConfigData(configData) {
-    const configPath = path.join(__dirname, 'config.json');
+    const configPath = path.join(__dirname, 'screens', 'main', 'config.json');
     fs.writeFileSync(configPath, JSON.stringify(configData, null, 2), 'utf-8');
 }
-module.exports = { getCurrentDate, takeScreenshot, saveConfigData };
+
+function registerGlobalShortcuts() {
+    try {
+        const configPath = path.join(__dirname, 'screens', 'main', 'config.json');
+        const configContent = fs.readFileSync(configPath, 'utf-8');
+        const configData = JSON.parse(configContent);
+        configData.forEach(item => {
+            globalShortcut.register(item.shortcut, () => {
+                const folder = item.name;
+                takeScreenshot(folder, `${folder} ${getCurrentDate()}`);
+            });
+        });
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+function unregisterGlobalShortcuts() {
+    globalShortcut.unregisterAll();
+}
+
+module.exports = {
+    getCurrentDate,
+    takeScreenshot,
+    saveConfigData,
+    registerGlobalShortcuts,
+    unregisterGlobalShortcuts
+};
