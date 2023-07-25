@@ -1,7 +1,7 @@
 {
   "name": "getbinder",
   "productName": "GetBinder",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Binder",
   "main": "src/index.js",
   "scripts": {
@@ -10,9 +10,13 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\"",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "build:publish": "set GH_TOKEN=* && electron-builder --win --publish always"
   },
-  "repository": "https://github.com/N1TAXE/screenok.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/N1TAXE/screenok.git"
+  },
   "publish": {
     "provider": "github",
     "releaseType": "release"
@@ -22,10 +26,13 @@
     "appId": "com.test.autoupdater",
     "productName": "GetBinder",
     "win": {
-      "target": "nsis"
+      "publish": [
+        "github"
+      ]
     },
     "directories": {
-      "output": "dist"
+      "output": "electron-build",
+      "buildResources": "build-assets"
     }
   },
   "author": {

@@ -2,12 +2,12 @@ const { BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
-class MainScreen {
+class UpdateScreen {
     window;
 
     position = {
-        width: 360,
-        height: 600,
+        width: 200,
+        height: 300,
         maximized: false,
     };
 
@@ -22,7 +22,8 @@ class MainScreen {
             autoHideMenuBar: true,
             webPreferences: {
                 contextIsolation: true,
-                preload: path.join(__dirname, "./mainPreload.js"),
+                nodeIntegration: true,
+                preload: path.join(__dirname, "./updatePreload.js"),
             },
         });
 
@@ -41,18 +42,7 @@ class MainScreen {
 
         try {
             // this.window.loadURL('http://localhost:3000');
-            this.window.loadFile("./src/screens/main/build/index.html");
-        } catch (e) {
-            console.log(e)
-        }
-    }
-
-    loadConfig() {
-        try {
-            const configPath = path.join(__dirname, 'config.json');
-            const configContent = fs.readFileSync(configPath, 'utf-8');
-            const configData = JSON.parse(configContent);
-            this.window.webContents.executeJavaScript(`window.postMessage({ type: 'config-data', payload: ${JSON.stringify(configData)} }, '*');`);
+            this.window.loadFile("./src/screens/updater/updater.html");
         } catch (e) {
             console.log(e)
         }
@@ -78,4 +68,4 @@ class MainScreen {
     }
 }
 
-module.exports = MainScreen;
+module.exports = UpdateScreen;
