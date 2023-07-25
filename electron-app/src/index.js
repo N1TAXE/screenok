@@ -87,6 +87,10 @@ autoUpdater.on('update-not-available', (info) => {
 autoUpdater.on("update-downloaded", (info) => {
   updateWindow.showMessage(`Обновление скачано, устанавливаем...`);
   updateWindow.setStatus(`update-downloaded`);
+  setTimeout(() => {
+    updateWindow.close();
+    updateWindow = null;
+  }, 1000)
 });
 
 autoUpdater.on("error", (info) => {
