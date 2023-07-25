@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="infos"></div>
+<div id="update-info"></div>
+<script>
+    const { ipcRenderer } = require("electron");
+
+    // Получаем сообщение об обновлении от главного процесса
+    ipcRenderer.on("update-available", (event, info) => {
+        const updateInfoDiv = document.getElementById("update-info");
+        const infos = document.getElementById("infos");
+        updateInfoDiv.innerHTML = `Version: ${info.version}, Release Notes: ${info.releaseNotes}`;
+        infos.innerHTML = `Обновление доступно...`;
+    });
+    ipcRenderer.on("update-not-available", (event, info) => {
+        const updateInfoDiv = document.getElementById("update-info");
+        const infos = document.getElementById("infos");
+        updateInfoDiv.innerHTML = `Version: ${info.version}, Release Notes: ${info.releaseNotes}`;
+        infos.innerHTML = `Обновлений нет...`;
+    });
+</script>
+</body>
+</html>

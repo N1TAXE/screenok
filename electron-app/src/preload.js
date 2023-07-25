@@ -15,3 +15,9 @@ contextBridge.exposeInMainWorld('api', {
         ipcRenderer.send('stopShortCuts');
     }
 });
+
+let bridge = {
+    updateMessage: (callback) => ipcRenderer.on("updateMessage", callback),
+};
+
+contextBridge.exposeInMainWorld("bridge", bridge);

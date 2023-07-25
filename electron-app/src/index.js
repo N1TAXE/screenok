@@ -1,16 +1,47 @@
 const { app, BrowserWindow, globalShortcut, ipcMain } = require('electron');
 const fs = require('fs');
 const path = require('path');
-const {getCurrentDate, takeScreenshot} = require("./utils/utils");
+const {getCurrentDate, takeScreenshot, saveConfigData} = require("./utils/utils");
+const {autoUpdater, AppUpdater} = require("electron-updater")
 
-function saveConfigData(configData) {
-  const configPath = path.join(__dirname, 'config.json');
-  fs.writeFileSync(configPath, JSON.stringify(configData, null, 2), 'utf-8');
+let updaterWindow;
+autoUpdater.autoInstallOnAppQuit = true;
+
+// Проверьте обновления при старте приложения
+app.on('ready', () => {
+  createUpdaterWindow(); // Создание окна обновления
+});
+
+function createUpdaterWindow() {
+  updaterWindow = new BrowserWindow({
+    width: 360,
+    height: 200,
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
+
+  updaterWindow.setMenuBarVisibility(false);
+  updaterWindow.loadFile(path.join(__dirname, 'updater.html')); // Имя файла HTML с информацией об обновлении
+
+  autoUpdater.checkForUpdates();
+
+  autoUpdater.on("update-available", (info) => {
+    if (updaterWindow) {
+      updaterWindow.webContents.send("update-available", info);
+      autoUpdater.quitAndInstall();
+    }
+  });
+
+  autoUpdater.on('update-not-available', (info) => {
+    updaterWindow.webContents.send("update-not-available", info);
+    if (updaterWindow) {
+      updaterWindow.close();
+    }
+    createWindow();
+  });
 }
 
-ipcMain.on('save-config-data', (event, configData) => {
-  saveConfigData(configData);
-});
 
 
 const createWindow = () => {
@@ -29,7 +60,7 @@ const createWindow = () => {
 
   mainWindow.setMenuBarVisibility(false);
 
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   // mainWindow.loadURL('http://localhost:3000');
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
@@ -51,6 +82,9 @@ function unregisterGlobalShortcuts() {
   globalShortcut.unregisterAll();
 }
 
+ipcMain.on('save-config-data', (event, configData) => {
+  saveConfigData(configData);
+});
 
 app.whenReady().then(() => {
   createWindow();

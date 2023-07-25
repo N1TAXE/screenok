@@ -1,17 +1,33 @@
 {
-  "name": "electron-app",
-  "productName": "electron-app",
+  "name": "getbinder",
+  "productName": "GetBinder",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Binder",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "dist": "electron-builder"
+  },
+  "repository": "https://github.com/N1TAXE/screenok.git",
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
   },
   "keywords": [],
+  "build" : {
+    "appId": "com.test.autoupdater",
+    "productName": "GetBinder",
+    "win": {
+      "target": "nsis"
+    },
+    "directories": {
+      "output": "dist"
+    }
+  },
   "author": {
     "name": "N1TAXE",
     "email": "n1t4x3@gmail.com"
@@ -20,7 +36,8 @@
   "dependencies": {
     "desktop-capture": "^0.1.1",
     "electron-log": "^4.4.8",
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-updater": "^6.1.1"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.2.1",
@@ -30,6 +47,8 @@
     "@electron-forge/maker-zip": "^6.2.1",
     "@electron-forge/plugin-auto-unpack-natives": "^6.2.1",
     "electron": "^15.3.0",
-    "electron-log": "^4.4.8"
+    "electron-log": "^4.4.8",
+    "electron-builder": "^24.6.3",
+    "electron-updater": "^6.1.1"
   }
 }

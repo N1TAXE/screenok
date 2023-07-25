@@ -93,4 +93,8 @@ function getCurrentDate() {
     return `${year}-${month}-${day} ${hours}-${minutes}-${seconds}`
 }
 
-module.exports = { getCurrentDate, takeScreenshot };
+function saveConfigData(configData) {
+    const configPath = path.join(__dirname, 'config.json');
+    fs.writeFileSync(configPath, JSON.stringify(configData, null, 2), 'utf-8');
+}
+module.exports = { getCurrentDate, takeScreenshot, saveConfigData };
