@@ -1,6 +1,8 @@
 const { BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const fs = require("fs");
+const { app } = require('electron');
+const {getConfigPath} = require("../../utils/utils");
 
 class MainScreen {
     window;
@@ -15,14 +17,18 @@ class MainScreen {
         this.window = new BrowserWindow({
             width: this.position.width,
             height: this.position.height,
+            icon: './src/screens/main/build/favicon.ico',
             title: "GetBinder",
             show: false,
+            frame: false,
+            titleBarStyle: 'hidden',
+            resizable: false,
             removeMenu: true,
             acceptFirstMouse: true,
             autoHideMenuBar: true,
             webPreferences: {
-                contextIsolation: true,
                 preload: path.join(__dirname, "./mainPreload.js"),
+                nodeIntegration: true,
             },
         });
 
@@ -49,8 +55,7 @@ class MainScreen {
 
     loadConfig() {
         try {
-            const configPath = path.join(__dirname, 'config.json');
-            const configContent = fs.readFileSync(configPath, 'utf-8');
+            const configContent = fs.readFileSync(getConfigPath(), 'utf-8');
             const configData = JSON.parse(configContent);
             this.window.webContents.executeJavaScript(`window.postMessage({ type: 'config-data', payload: ${JSON.stringify(configData)} }, '*');`);
         } catch (e) {
@@ -62,6 +67,10 @@ class MainScreen {
         console.log("showMessage trapped");
         console.log(message);
         this.window.webContents.send("updateMessage", message);
+    }
+
+    minimize() {
+        this.window.minimize();
     }
 
     close() {

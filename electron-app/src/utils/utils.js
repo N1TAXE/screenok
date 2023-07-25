@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require('fs');
 const log = require('electron-log');
-const {desktopCapturer, screen, globalShortcut} = require('electron')
+const {desktopCapturer, screen, globalShortcut, app} = require('electron')
 
 // Путь для хранения логов (в примере это папка "logs" в корне приложения)
 const exeDir = path.dirname(process.execPath);
@@ -93,15 +93,26 @@ function getCurrentDate() {
     return `${year}-${month}-${day} ${hours}-${minutes}-${seconds}`
 }
 
+function getConfigPath() {
+    const userDataPath = app.getPath('userData');
+    return path.join(userDataPath, 'config.json');
+}
+
 function saveConfigData(configData) {
-    const configPath = path.join(__dirname, 'screens', 'main', 'config.json');
-    fs.writeFileSync(configPath, JSON.stringify(configData, null, 2), 'utf-8');
+    try {
+        const configPath = getConfigPath();
+        fs.writeFileSync(configPath, JSON.stringify(configData, null, 2), 'utf-8');
+        console.log('Config saved:', configPath)
+    } catch (e) {
+        console.log('Config save error:', e)
+    }
 }
 
 function registerGlobalShortcuts() {
     try {
-        const configPath = path.join(__dirname, 'screens', 'main', 'config.json');
+        const configPath = getConfigPath();
         const configContent = fs.readFileSync(configPath, 'utf-8');
+        console.log('Config loaded:', configPath)
         const configData = JSON.parse(configContent);
         configData.forEach(item => {
             globalShortcut.register(item.shortcut, () => {
@@ -123,5 +134,6 @@ module.exports = {
     takeScreenshot,
     saveConfigData,
     registerGlobalShortcuts,
-    unregisterGlobalShortcuts
+    unregisterGlobalShortcuts,
+    getConfigPath
 };

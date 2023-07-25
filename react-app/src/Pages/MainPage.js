@@ -25,7 +25,7 @@ const MainPage = observer(() => {
 
     return (
         <React.Fragment>
-            <Header title="Мои профили тест"/>
+            <Header title="Мои профили"/>
             <div className="container">
                 <button className="btn btn-md btn-dark w100" onClick={handleAddItem}>Создать профиль</button>
                 <div className="profile-list">

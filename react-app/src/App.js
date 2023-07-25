@@ -5,6 +5,7 @@ import AppRouter from "./components/AppRouter";
 import {Context} from "./index";
 import {observer} from "mobx-react-lite";
 import Header from "./components/Header";
+import TopBar from "./components/TopBar";
 
 const App = observer(() => {
     const {config} = useContext(Context);
@@ -25,6 +26,7 @@ const App = observer(() => {
 
     return (
         <HashRouter>
+            <TopBar/>
             <AppRouter/>
         </HashRouter>
     );

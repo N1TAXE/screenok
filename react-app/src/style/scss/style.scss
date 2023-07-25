@@ -6,6 +6,10 @@ html, body {
   }
 }
 
+body {
+  -webkit-app-region: no-drag;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -165,4 +169,45 @@ header {
   align-items: center;
   width: 100%;
   justify-content: space-between;
+}
+
+.topbar {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+  display: flex;
+  width: 100%;
+  padding-left: 8px;
+  justify-content: space-between;
+  align-items: center;
+  background: #26272C;
+
+  color: #FFF;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 8px;
+
+  &-btns {
+    -webkit-app-region: no-drag;
+    display: flex;
+    align-items: center;
+  }
+
+  &-button {
+    -webkit-app-region: no-drag;
+    cursor: pointer;
+    display: flex;
+    width: 24px;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: #26272C;
+    transition: background-color ease .3s;
+    border: none;
+
+    &:hover {
+      background: lighten(#26272C, 7%);
+    }
+  }
 }

@@ -15,6 +15,28 @@ autoUpdater.autoDownload = false;
 const createWindow = () => {
   mainWindow = new MainScreen();
   mainWindow.loadConfig()
+
+  ipcMain.on('minimizeAppWindow', () => {
+    mainWindow.minimize();
+  });
+
+  ipcMain.on('closeAppWindow', () => {
+    mainWindow.close();
+    mainWindow = null;
+  });
+
+  ipcMain.on('save-config-data', (event, configData) => {
+    saveConfigData(configData);
+  });
+
+  ipcMain.on('startShortCuts', () => {
+    registerGlobalShortcuts();
+  });
+
+  ipcMain.on('stopShortCuts', () => {
+    unregisterGlobalShortcuts();
+  });
+
 };
 
 const createUpdateWindow = () => {
@@ -34,6 +56,12 @@ app.whenReady().then(() => {
   updateWindow.showMessage(`Проверка обновлений...`);
   updateWindow.setVersion(`${app.getVersion()}`);
   updateWindow.setStatus(`check-for-updates`);
+
+  // setTimeout(() => {
+  //   updateWindow.close();
+  //   updateWindow = null;
+  //   createWindow();
+  // }, 1000);
 });
 
 autoUpdater.on("update-available", (info) => {
@@ -60,18 +88,6 @@ autoUpdater.on("update-downloaded", (info) => {
 
 autoUpdater.on("error", (info) => {
   updateWindow.showMessage(info);
-});
-
-ipcMain.on('save-config-data', (event, configData) => {
-  saveConfigData(configData);
-});
-
-ipcMain.on('startShortCuts', () => {
-  registerGlobalShortcuts();
-});
-
-ipcMain.on('stopShortCuts', () => {
-  unregisterGlobalShortcuts();
 });
 
 app.on('window-all-closed', () => {

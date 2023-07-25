@@ -13,6 +13,12 @@ contextBridge.exposeInMainWorld('api', {
     },
     stopShortCuts: () => {
         ipcRenderer.send('stopShortCuts');
+    },
+    closeApp: () => {
+        ipcRenderer.send('closeAppWindow');
+    },
+    minimizeApp: () => {
+        ipcRenderer.send('minimizeAppWindow');
     }
 });
 

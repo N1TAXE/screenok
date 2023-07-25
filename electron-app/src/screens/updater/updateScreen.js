@@ -6,8 +6,8 @@ class UpdateScreen {
     window;
 
     position = {
-        width: 200,
-        height: 300,
+        width: 240,
+        height: 256,
         maximized: false,
     };
 
@@ -16,6 +16,8 @@ class UpdateScreen {
             width: this.position.width,
             height: this.position.height,
             titleBarStyle: 'hidden',
+            icon: './src/screens/main/build/favicon.ico',
+            resizable: false,
             title: "GetBinder",
             show: false,
             frame: false,
@@ -23,7 +25,6 @@ class UpdateScreen {
             acceptFirstMouse: true,
             autoHideMenuBar: true,
             webPreferences: {
-                contextIsolation: true,
                 nodeIntegration: true,
                 preload: path.join(__dirname, "./updatePreload.js"),
             },

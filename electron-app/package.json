@@ -28,7 +28,8 @@
     "win": {
       "publish": [
         "github"
-      ]
+      ],
+      "icon": "src/screens/main/build/favicon.ico"
     },
     "directories": {
       "output": "electron-build",
