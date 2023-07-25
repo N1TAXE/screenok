@@ -1,7 +1,7 @@
 {
   "name": "getbinder",
   "productName": "GetBinder",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "description": "Binder",
   "main": "src/index.js",
   "scripts": {
