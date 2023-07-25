@@ -5,21 +5,56 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="static/css/main.04153c9d.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
-<h1>This is my auto-updated app</h1>
-<strong><div id="message">Status message...</div></strong>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        window.bridge.updateMessage(updateMessage);
-    });
+    <div class="updater">
+        <div id="logotype">
+            <svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M28.703 58.3483C28.703 61.6032 24.7275 63.2255 22.4172 60.9134L1.07191 39.5522C-1.22698 37.2516 0.416428 33.3428 3.68256 33.3428H17.1233C18.1041 33.3428 19.0442 33.7315 19.7344 34.4225L27.6389 42.3357C28.3206 43.0181 28.703 43.9398 28.703 44.9004V58.3483Z" fill="#FF005C"/>
+                <path d="M33.297 58.3483C33.297 61.6032 37.2725 63.2255 39.5828 60.9134L60.9281 39.5522C63.227 37.2516 61.5836 33.3428 58.3174 33.3428H30.9846C27.7517 33.3428 26.0939 37.1837 28.3257 39.503L33.1518 44.5183C33.245 44.6151 33.297 44.7439 33.297 44.8777V58.3483Z" fill="#FF005C"/>
+                <path d="M33.297 3.65167C33.297 0.396829 37.2725 -1.22548 39.5828 1.08657L60.9281 22.4478C63.227 24.7484 61.5836 28.6572 58.3174 28.6572H44.8767C43.8959 28.6572 42.9558 28.2685 42.2656 27.5775L34.3611 19.6643C33.6794 18.9819 33.297 18.0602 33.297 17.0996V3.65167Z" fill="#FF005C"/>
+                <path d="M28.703 3.65167C28.703 0.396829 24.7275 -1.22548 22.4172 1.08657L1.07191 22.4478C-1.22698 24.7484 0.416428 28.6572 3.68256 28.6572H17.1233C18.1041 28.6572 19.0442 28.2685 19.7344 27.5775L27.6389 19.6643C28.3206 18.9819 28.703 18.0602 28.703 17.0996V3.65167Z" fill="#FF005C"/>
+            </svg>
+        </div>
+        <div id="title">GetBinder</div>
+        <div id="version">1.0.0</div>
+        <div id="loader" class="custom-loader"></div>
+        <div id="message">Status message...</div>
+    </div>
 
-    function updateMessage(event, message) {
-        console.log("message logged in view");
-        let elemE = document.getElementById("message");
-        elemE.innerHTML = message;
-    }
-</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            window.bridge.updateMessage(updateMessage);
+            window.bridge.status(handleStatus);
+            window.bridge.version(handleVersion);
+        });
+
+        function updateMessage(event, message) {
+            let elemE = document.getElementById("message");
+            elemE.innerHTML = message;
+        }
+
+        function handleVersion(event, version) {
+            let elemE = document.getElementById("version");
+            elemE.innerHTML = version;
+        }
+
+        function handleStatus(event, status) {
+            let e;
+            switch (status) {
+                case 'check-for-updates':
+                    e = document.getElementById("loader");
+                    e.style.display = 'block';
+                    break
+                case 'update-not-available':
+                    e = document.getElementById("loader");
+                    e.style.display = 'none';
+                    break
+            }
+
+        }
+    </script>
 </body>
 </html>

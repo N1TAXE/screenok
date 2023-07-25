@@ -31,17 +31,21 @@ app.whenReady().then(() => {
   });
 
   autoUpdater.checkForUpdates();
-  updateWindow.showMessage(`Проверка обновлений... Текущая версия: ${app.getVersion()}`);
+  updateWindow.showMessage(`Проверка обновлений...`);
+  updateWindow.setVersion(`${app.getVersion()}`);
+  updateWindow.setStatus(`check-for-updates`);
 });
 
 autoUpdater.on("update-available", (info) => {
-  updateWindow.showMessage(`Обновление доступно. Текущая версия: ${app.getVersion()}`);
+  updateWindow.showMessage(`Качаем обновление...`);
   let pth = autoUpdater.downloadUpdate();
   updateWindow.showMessage(pth);
+  updateWindow.setStatus(`update-available`);
 });
 
 autoUpdater.on('update-not-available', (info) => {
-  updateWindow.showMessage(`Нет обновлений. Текущая версия: ${app.getVersion()}`);
+  updateWindow.showMessage(`Последняя версия.`);
+  updateWindow.setStatus(`update-not-available`);
   setTimeout(() => {
     updateWindow.close();
     updateWindow = null;
@@ -50,7 +54,8 @@ autoUpdater.on('update-not-available', (info) => {
 });
 
 autoUpdater.on("update-downloaded", (info) => {
-  updateWindow.showMessage(`Обновление скачано. Текущая версия: ${app.getVersion()}`);
+  updateWindow.showMessage(`Обновление скачано, устанавливаем...`);
+  updateWindow.setStatus(`update-downloaded`);
 });
 
 autoUpdater.on("error", (info) => {

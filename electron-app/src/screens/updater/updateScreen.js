@@ -15,8 +15,10 @@ class UpdateScreen {
         this.window = new BrowserWindow({
             width: this.position.width,
             height: this.position.height,
+            titleBarStyle: 'hidden',
             title: "GetBinder",
             show: false,
+            frame: false,
             removeMenu: true,
             acceptFirstMouse: true,
             autoHideMenuBar: true,
@@ -52,6 +54,18 @@ class UpdateScreen {
         console.log("showMessage trapped");
         console.log(message);
         this.window.webContents.send("updateMessage", message);
+    }
+
+    setStatus(stat) {
+        console.log("showMessage trapped");
+        console.log(stat);
+        this.window.webContents.send("status", stat);
+    }
+
+    setVersion(version) {
+        console.log("showMessage trapped");
+        console.log(version);
+        this.window.webContents.send("version", version);
     }
 
     close() {
