@@ -51,15 +51,15 @@ async function takeScreenshot(folder, name) {
     const sources = await desktopCapturer.getSources(options);
 
     // Find the primary display's source
-    const primarySource = sources.find(({display_id}) => display_id == primaryDisplay.id)
+    const primarySource = sources.find(({display_id}) => display_id.toString() === primaryDisplay.id.toString())
 
     // Get the image
     const image = primarySource.thumbnail;
 
     // Return image data
-    const exeDir = path.dirname(process.execPath);
-    const folderPath = path.join(exeDir, 'screenshots', folder);
-    const screenshotPath = path.join(folderPath, `${name}.png`);
+    const configData = JSON.parse(getConfig());
+    const folderPath =  configData.settings.screenshotPath;
+    const screenshotPath = path.join(folderPath, `${name}.jpeg`);
 
     if (!fs.existsSync(folderPath)) {
         try {
@@ -71,7 +71,7 @@ async function takeScreenshot(folder, name) {
         }
     }
 
-    fs.writeFile(screenshotPath, image.toPNG(), err => {
+    fs.writeFile(screenshotPath, image.toJPEG(90), err => {
         if (err) {
             saveToLog(`Произошла ошибка: ${err}`);
             console.error('Failed to save screenshot:', err);
@@ -95,7 +95,14 @@ function getCurrentDate() {
 
 function getConfigPath() {
     const userDataPath = app.getPath('userData');
-    return path.join(userDataPath, 'config.json');
+    const filePath = path.join(userDataPath, `config.json`);
+    if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, JSON.stringify({
+        binds: [],
+        settings: {
+            screenshotPath: path.join(app.getPath('pictures'), `GetBinder`, 'screenshots'),
+        }
+    }, null, 2), 'utf-8');
+    return filePath;
 }
 
 function saveConfigData(configData) {
@@ -108,13 +115,16 @@ function saveConfigData(configData) {
     }
 }
 
+function getConfig() {
+    const configPath = getConfigPath();
+    return fs.readFileSync(configPath, 'utf-8');
+}
+
 function registerGlobalShortcuts() {
     try {
-        const configPath = getConfigPath();
-        const configContent = fs.readFileSync(configPath, 'utf-8');
-        console.log('Config loaded:', configPath)
+        const configContent = getConfig();
         const configData = JSON.parse(configContent);
-        configData.forEach(item => {
+        configData.binds.forEach(item => {
             if (item.shortcut !== null) {
                 globalShortcut.register(item.shortcut, () => {
                     const folder = item.name;
@@ -132,6 +142,7 @@ function unregisterGlobalShortcuts() {
 }
 
 module.exports = {
+    getConfig,
     getCurrentDate,
     takeScreenshot,
     saveConfigData,

@@ -1,8 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
-const fs = require('fs');
 const MainScreen = require("./screens/main/mainScreen");
 const UpdateScreen = require("./screens/updater/updateScreen");
-const path = require('path');
 const {saveConfigData, unregisterGlobalShortcuts, registerGlobalShortcuts} = require("./utils/utils");
 const {autoUpdater} = require("electron-updater")
 
@@ -54,11 +52,11 @@ app.whenReady().then(() => {
 
   autoUpdater.checkForUpdates();
 
-  // setTimeout(() => {
-  //   updateWindow.close();
-  //   updateWindow = null;
-  //   createWindow();
-  // }, 1000);
+  setTimeout(() => {
+    updateWindow.close();
+    updateWindow = null;
+    createWindow();
+  }, 1000);
 });
 
 autoUpdater.on("checking-for-update", (info) => {

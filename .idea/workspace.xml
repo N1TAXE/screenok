@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5c531c44-830f-47c8-9476-8432a2fc7698" name="Changes" comment="Added delete button and UI improvements">
+      <change afterPath="$PROJECT_DIR$/electron-app/src/utils/consts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-app/public/sfx/screenshot.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electron-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electron-app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/screens/main/build/asset-manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/screens/main/build/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/screens/main/build/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/screens/main/build/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/screens/main/build/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/screens/main/build/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/screens/main/build/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/screens/main/build/static/css/main.3fabefeb.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/screens/main/build/static/css/main.3fabefeb.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/screens/main/build/static/js/main.66282b20.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/screens/main/build/static/js/main.66282b20.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/screens/main/build/static/js/main.66282b20.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/screens/main/mainScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/screens/main/mainScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-app/src/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/electron-app/src/utils/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-app/src/Pages/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/Pages/MainPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-app/src/components/BindItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/components/BindItem.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,42 +45,72 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;N1TAXE&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/N1TAXE/screenok&quot;,
+    &quot;accountId&quot;: &quot;2a335a7c-6f70-42b7-b64b-09554fe0ac13&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2SfhaPGMLQIJj42zVeqRGXUwdgH" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "WebServerToolWindowFactoryState": "false",
-    "javascript.nodejs.core.library.configured.version": "18.16.1",
-    "javascript.nodejs.core.library.typings.version": "18.16.1",
-    "last_opened_file_path": "D:/.WORK/www/screenok/electron-app/src/screens/main",
+    "git-widget-placeholder": "master",
+    "javascript.nodejs.core.library.configured.version": "20.18.0",
+    "javascript.nodejs.core.library.typings.version": "20.19.0",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/n1taxe/WebstormProjects/screenok/electron-app/src/utils",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2025.1.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\n1taxe\WebstormProjects\screenok\electron-app\src\utils" />
+      <recent name="C:\Users\n1taxe\WebstormProjects\screenok\react-app\public\sfx" />
       <recent name="D:\.WORK\www\screenok\electron-app\src\screens\main" />
       <recent name="D:\.WORK\www\screenok\react-app\public" />
       <recent name="D:\.WORK\www\screenok\electron-app\src\screens\updater" />
-      <recent name="D:\.WORK\www\screenok\electron-app\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\n1taxe\WebstormProjects\screenok\react-app\src\utils" />
       <recent name="D:\.WORK\www\screenok\electron-app" />
       <recent name="D:\.WORK\www\screenok\electron-app\src\screens\main\build" />
       <recent name="D:\.WORK\www\screenok\electron-app\src\utils" />
       <recent name="D:\.WORK\www\screenok\electron-app\src\screens\main" />
-      <recent name="D:\.WORK\www\screenok\electron-app\src" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-WS-251.25410.117" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -76,6 +129,8 @@
       <workItem from="1690237870197" duration="730000" />
       <workItem from="1690238767677" duration="12116000" />
       <workItem from="1690283935700" duration="17629000" />
+      <workItem from="1749239527299" duration="144000" />
+      <workItem from="1749239676908" duration="9472000" />
     </task>
     <task id="LOCAL-00001" summary="Init Commit">
       <created>1690071459521</created>

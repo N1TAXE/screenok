@@ -43,11 +43,19 @@ class MainScreen {
         this.handleMessages();
 
         let wc = this.window.webContents;
-        // wc.openDevTools({ mode: "undocked" });
 
         try {
             // this.window.loadURL('http://localhost:3000');
-            this.window.loadFile("./src/screens/main/build/index.html");
+            if (process.env.NODE_ENV === "development") {
+                console.log(__dirname)
+                this.window.loadURL('http://localhost:3000').then(() => {
+                    console.log('React dev server loaded');
+                    this.window.webContents.openDevTools();
+                })
+                    .catch(e => console.error('Failed to load React:', e));
+            } else {
+                this.window.loadFile("./src/screens/main/build/index.html");
+            }
         } catch (e) {
             console.log(e)
         }

@@ -15,7 +15,7 @@ const BindItem = observer(() => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const item = config.getConfig.find((item) => item.id === Number(id));
+        const item = config.getConfig.binds.find((item) => item.id === Number(id));
         setFound(item)
     }, [id, config.getConfig])
 
@@ -61,21 +61,27 @@ const BindItem = observer(() => {
     };
 
     const handleDelete = () => {
-        const updatedConfig = config.getConfig.filter(item => item.id !== foundConfigItem.id);
-        config.setConfig(updatedConfig);
+        const updatedConfig = config.getConfig.binds.filter(item => item.id !== foundConfigItem.id);
+        config.setConfig({
+            ...config.getConfig,
+            binds: updatedConfig
+        });
         window.api.saveConfigData(JSON.parse(JSON.stringify(config.getConfig)));
         navigate(MAIN_ROUTE);
     }
 
     const handleSaveConfig = () => {
-        const updatedConfig = config.getConfig.map(item => {
+        const updatedConfig = config.getConfig.binds.map(item => {
             if (item.id === foundConfigItem.id) {
                 return { ...item, id: Number(id), name: name, shortcut: shortCut };
             } else {
                 return item;
             }
         });
-        config.setConfig(updatedConfig);
+        config.setConfig({
+            ...config.getConfig,
+            binds: updatedConfig
+        });
         // Вызываем функцию из основного процесса Electron для сохранения данных в файл
         window.api.saveConfigData(JSON.parse(JSON.stringify(config.getConfig)));
         navigate(MAIN_ROUTE);
