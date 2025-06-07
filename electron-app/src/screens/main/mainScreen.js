@@ -48,7 +48,7 @@ class MainScreen {
             // this.window.loadURL('http://localhost:3000');
             if (process.env.NODE_ENV === "development") {
                 console.log(__dirname)
-                this.window.loadURL('http://localhost:3000').then(() => {
+                this.window.loadURL('http://localhost:5173').then(() => {
                     console.log('React dev server loaded');
                     this.window.webContents.openDevTools();
                 })

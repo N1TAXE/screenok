@@ -1,0 +1,6 @@
+# file: ~/.gitignore_global
+.DS_Store
+.idea
+
+electron-app/node_modules
+react-app/node_modules

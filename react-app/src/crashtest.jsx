@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "@types/react";
 import UserItem from "./components/UserItem";
 
-function CrashTest() {
+function Crashtest() {
     const [siteBalance, setSiteBalance] = useState(0)
     const [isStarted, setIsStarted] = useState(false)
     const [isEnd, setIsEnd] = useState(false)
@@ -133,4 +133,4 @@ function CrashTest() {
     );
 }
 
-export default CrashTest;
+export default Crashtest;
